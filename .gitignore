@@ -1,0 +1,4 @@
+/venv
+*.log
+/pickleball_xclip_model
+/dataset_pickleball
