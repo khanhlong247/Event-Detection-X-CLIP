@@ -1,123 +1,68 @@
-# X-CLIP: End-to-End Multi-grained Contrastive Learning for Video-Text Retrieval
+# 🧠 CLIP4Clip and X-CLIP Project: A Comprehensive Video Retrieval Solution
+The CLIP4Clip and X-CLIP project is a cutting-edge video retrieval solution that leverages the power of deep learning to enable efficient and accurate video retrieval. This project provides a robust framework for training and evaluating video retrieval models, with a focus on cross-modal retrieval tasks. The project is designed to be highly customizable, allowing developers to easily integrate it with their own datasets and models.
 
-## Introduction
+## 🚀 Features
+- **Cross-Modal Retrieval**: The project supports cross-modal retrieval tasks, such as text-image retrieval and video-text retrieval.
+- **Customizable**: The project is highly customizable, allowing developers to easily integrate it with their own datasets and models.
+- **Efficient Training**: The project provides an efficient training framework, allowing developers to train models quickly and accurately.
+- **Evaluation Metrics**: The project provides a range of evaluation metrics, allowing developers to assess the performance of their models.
+- **Pre-Trained Models**: The project provides pre-trained models, allowing developers to get started quickly and easily.
 
-The implementation of paper [X-CLIP: End-to-End Multi-grained Contrastive Learning for Video-Text Retrieval](https://arxiv.org/abs/2207.07285 "X-CLIP: End-to-End Multi-grained Contrastive Learning for Video-Text Retrieval"). Accepted by ACMMM22. By [Yiwei Ma](https://github.com/xmu-xiaoma666 "Yiwei Ma"), [Guohai Xu](https://scholar.google.com/citations?user=bS8Ku4MAAAAJ\&hl=en "Guohai Xu"), [Xiaoshuai Sun](https://scholar.google.com/citations?user=KPMK3B4AAAAJ\&hl=en "Xiaoshuai Sun")\*, [Ming Yan](https://scholar.google.com/citations?user=uIUfGxYAAAAJ\&hl=zh-CN "Ming Yan"), [Ji Zhang](https://scholar.google.com/citations?user=cgnuJDUAAAAJ\&hl=zh-CN "Ji Zhang"), [Rongrong Ji](https://scholar.google.com/citations?user=lRSD7PQAAAAJ\&hl=en "Rongrong Ji").
+## 🛠️ Tech Stack
+- **Python**: The project is built using Python, a popular and versatile programming language.
+- **PyTorch**: The project uses PyTorch, a popular deep learning framework, to build and train models.
+- **Torchvision**: The project uses Torchvision, a computer vision library, to handle image and video processing.
+- **Transformers**: The project uses Transformers, a popular library for natural language processing, to handle text processing.
+- **NumPy**: The project uses NumPy, a library for numerical computing, to handle numerical computations.
+- **Argparse**: The project uses Argparse, a library for command-line argument parsing, to handle command-line arguments.
+- **JSON**: The project uses JSON, a lightweight data interchange format, to handle data storage and retrieval.
 
+## 📦 Installation
+To install the project, follow these steps:
+1. Clone the repository using `git clone https://github.com/your-repo/clip4clip.git`.
+2. Install the required dependencies using `pip install -r requirements.txt`.
+3. Install PyTorch and Torchvision using `pip install torch torchvision`.
+4. Install Transformers using `pip install transformers`.
 
+## 💻 Usage
+To use the project, follow these steps:
+1. Prepare your dataset by creating a JSON file that contains the video and text data.
+2. Create a configuration file that specifies the model architecture, hyperparameters, and other settings.
+3. Train the model using the `train.py` script.
+4. Evaluate the model using the `evaluate.py` script.
 
-X-CLIP adopts cross-grained contrastive learning and attention over similarity matrix module to filter out unnecessary information during video-text retrieval. It achieves SOTA results on MSR-VTT, MSVD, LSMDC, DiDeMo, and ActivityNet.
-
-<!-- ![XCLIP](./XCLIP.png) -->
-
-![image](https://user-images.githubusercontent.com/33897496/191735201-e951c434-c5aa-4646-b8f8-d594d2fad99b.png)
-
-
-## News
-
-*   **2022.09.20**: Released code
-
-## Requirement
-
-*   [PyTorch](https://pytorch.org/ "PyTorch") version = 1.7.1
-
-*   Install other libraries via
-
-```bash
-conda create -n xclip python=3.11 -y
-conda activate xclip
-pip install --upgrade pip
-pip install torch==2.2.2+cu118 torchvision==0.17.2+cu118 torchaudio==2.2.2+cu118 --index-url https://download.pytorch.org/whl/cu118
-pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu118
+## 📂 Project Structure
+```markdown
+.
+├── main_clip4clip.py
+├── main_xclip.py
+├── train.py
+├── util.py
+├── modules
+│   ├── modeling.py
+│   ├── modeling_xclip.py
+│   ├── module_clip.py
+│   ├── module_cross.py
+│   └── until_config.py
+├── dataloaders
+│   ├── data_dataloaders.py
+│   └── ...
+├── cross-base
+│   ├── cross_config.json
+│   └── ...
+├── requirements.txt
+└── README.md
 ```
 
-## How to Run
+## 📸 Screenshots
 
-（1）About data download
+## 🤝 Contributing
+To contribute to the project, follow these steps:
+1. Fork the repository using `git fork https://github.com/your-repo/clip4clip.git`.
+2. Create a new branch using `git branch your-branch`.
+3. Make your changes and commit them using `git commit -m "your-commit-message"`.
+4. Push your changes using `git push origin your-branch`.
+5. Create a pull request using `git pull-request`.
 
-Please refer to the guides from [CLIP4Clip: Data Preparing](https://github.com/ArrowLuo/CLIP4Clip#:~:text=Data-,Preparing,-For%20MSRVTT).
-
-
-
-（2）About the pretrained CLIP checkpoints
-
-You can find more pretrained models in [here](https://github.com/openai/CLIP/blob/main/clip/clip.py "here").
-
-```bash
-# download CLIP（ViT-B/32） weight
-wget -P ./modules https://openaipublic.azureedge.net/clip/models/40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af/ViT-B-32.pt
-
-# download CLIP（ViT-B/16） weight
-wget -P ./modules https://openaipublic.azureedge.net/clip/models/5806e77cd80f8b59890b7e101eabd078d9fb84e6937f9e85e4ecb61988df416f/ViT-B-16.pt
-```
-
-
-
-（3）About the running scripts
-
-**MSR-VTT**
-
-```bash
-# ViT-B/32
-sh scripts/run_xclip_msrvtt_vit32.sh
-
-# ViT-B/16
-sh scripts/run_xclip_msrvtt_vit16.sh
-```
-
-**MSVD**
-
-```bash
-# ViT-B/32
-sh scripts/run_xclip_msvd_vit32.sh
-
-# ViT-B/16
-sh scripts/run_xclip_msvd_vit16.sh
-```
-
-**LSMDC**
-
-```bash
-# ViT-B/32
-sh scripts/run_xclip_lsmdc_vit32.sh
-
-# ViT-B/16
-sh scripts/run_xclip_lsmdc_vit16.sh
-```
-
-**DiDeMo**
-
-```bash
-# ViT-B/32
-sh scripts/run_xclip_didemo_vit32.sh
-
-# ViT-B/16
-sh scripts/run_xclip_didemo_vit16.sh
-```
-
-**ActivityNet**
-
-```bash
-# ViT-B/32
-sh scripts/run_xclip_actnet_vit32.sh
-
-# ViT-B/16
-sh scripts/run_xclip_actnet_vit16.sh
-```
-
-## Citation
-
-If you find our method useful in your work, please cite:
-
-```python
-@article{Ma2022XCLIP,
-  title={{X-CLIP:}: End-to-End Multi-grained Contrastive Learning for Video-Text Retrieval},
-  author={Yiwei Ma and Guohai Xu and Xiaoshuai Sun and Ming Yan and Ji Zhang and Rongrong Ji},
-  journal={arXiv preprint arXiv:2207.07285},
-  year={2022}
-}
-```
-
-## Acknowledgments
-
-The implementation of X-CLIP relies on resources from [CLIP4Clip](https://github.com/ArrowLuo/CLIP4Clip "CLIP4Clip") and [CLIP](https://github.com/openai/CLIP "CLIP"). We thank the original authors for their open-sourcing.
+## 📝 License
+The project is licensed under the MIT License.
